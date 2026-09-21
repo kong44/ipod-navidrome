@@ -23,13 +23,22 @@ import { audioEngine } from '../../services/audioEngine';
 export const IpodPlayer: React.FC = () => {
   const [theme, setTheme] = useState<IpodTheme>('silver');
   const [isHold, setIsHold] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem('ipod_fullscreen_mode') === 'true';
+    } catch {
+      return false;
+    }
+  });
   const [albumsCache, setAlbumsCache] = useState<Album[]>([]);
   const [playbackState, setPlaybackState] = useState<PlaybackState>(audioEngine.getState());
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!(document.fullscreenElement || (document as any).webkitFullscreenElement));
+      const isNativeFull = !!(document.fullscreenElement || (document as any).webkitFullscreenElement);
+      if (isNativeFull) {
+        setIsFullscreen(true);
+      }
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
@@ -40,19 +49,33 @@ export const IpodPlayer: React.FC = () => {
   }, []);
 
   const handleToggleFullscreen = useCallback(() => {
-    if (!document.fullscreenElement && !(document as any).webkitFullscreenElement) {
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch(() => {});
-      } else if ((document.documentElement as any).webkitRequestFullscreen) {
-        (document.documentElement as any).webkitRequestFullscreen();
+    setIsFullscreen((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('ipod_fullscreen_mode', String(next));
+      } catch {
+        // ignore
       }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen().catch(() => {});
-      } else if ((document as any).webkitExitFullscreen) {
-        (document as any).webkitExitFullscreen();
+
+      // Try native browser fullscreen if supported (desktop / Android)
+      if (next) {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else if ((document.documentElement as any).webkitRequestFullscreen) {
+          (document.documentElement as any).webkitRequestFullscreen();
+        }
+      } else {
+        if (document.fullscreenElement || (document as any).webkitFullscreenElement) {
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          } else if ((document as any).webkitExitFullscreen) {
+            (document as any).webkitExitFullscreen();
+          }
+        }
       }
-    }
+
+      return next;
+    });
   }, []);
 
   // Navigation Stack
