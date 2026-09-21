@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+}
+
+/* Authentic iPod LCD Glass and Display Effects */
+.ipod-screen-container {
+  background: #ffffff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 -1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.ipod-header-gradient {
+  background: linear-gradient(180deg, #f7f9fa 0%, #e2e8f0 48%, #cbd5e1 52%, #94a3b8 100%);
+  border-bottom: 1px solid #64748b;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.ipod-header-classic {
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 51%, #93c5fd 100%);
+  border-bottom: 1px solid #3b82f6;
+}
+
+/* iPod Selection Bar: Iconic glossy Apple blue pill */
+.ipod-selected-row {
+  background: linear-gradient(180deg, #4f96f6 0%, #3b82f6 48%, #2563eb 52%, #1d4ed8 100%);
+  color: #ffffff !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.ipod-selected-row * {
+  color: #ffffff !important;
+}
+
+/* iPod Click Wheel Tactile Styles */
+.click-wheel-surface {
+  touch-action: none;
+  background: radial-gradient(circle at 45% 45%, #ffffff 0%, #f1f2f4 40%, #e1e3e7 90%, #d2d4d8 100%);
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 4px 8px -2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.click-wheel-dark {
+  background: radial-gradient(circle at 45% 45%, #2a2b2e 0%, #1f2023 50%, #18181a 100%);
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.6),
+    0 4px 8px -2px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.click-wheel-u2 {
+  background: radial-gradient(circle at 45% 45%, #e62222 0%, #cc1818 50%, #a81010 100%);
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
+    0 4px 8px -2px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.center-button {
+  background: radial-gradient(circle at 45% 45%, #ffffff 0%, #f4f5f7 40%, #e2e4e8 100%);
+  box-shadow: 
+    0 2px 5px rgba(0,0,0,0.2),
+    inset 0 1px 1px rgba(255,255,255,0.9),
+    inset 0 -1px 2px rgba(0,0,0,0.15);
+}
+
+.center-button-dark {
+  background: radial-gradient(circle at 45% 45%, #2f3034 0%, #222326 60%, #1a1b1d 100%);
+  box-shadow: 
+    0 2px 5px rgba(0,0,0,0.5),
+    inset 0 1px 1px rgba(255,255,255,0.2),
+    inset 0 -1px 2px rgba(0,0,0,0.6);
+}
+
+/* 3D Cover Flow Perspective & Reflections */
+.coverflow-stage {
+  perspective: 900px;
+  perspective-origin: 50% 45%;
+  transform-style: preserve-3d;
+}
+
+.cover-reflection {
+  -webkit-box-reflect: below 2px linear-gradient(transparent 65%, rgba(0, 0, 0, 0.3) 90%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.cover-reflection-light {
+  -webkit-box-reflect: below 2px linear-gradient(transparent 70%, rgba(255, 255, 255, 0.2) 90%, rgba(255, 255, 255, 0.45) 100%);
+}
+
+/* iPod Custom Mini Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 2px;
+}
