@@ -540,6 +540,7 @@ export const IpodPlayer: React.FC = () => {
       <IpodChassis
         theme={theme}
         isHold={isHold}
+        isFullscreen={isFullscreen}
         onToggleHold={() => setIsHold(!isHold)}
         clickWheel={
           <ClickWheel
