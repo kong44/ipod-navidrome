@@ -13,6 +13,8 @@ interface SettingsViewProps {
   isShuffle: boolean;
   onToggleRepeat: () => void;
   onToggleShuffle: () => void;
+  isFullscreen: boolean;
+  onToggleFullscreen: () => void;
 }
 
 export const SettingsView: React.FC<SettingsViewProps> = ({
@@ -24,6 +26,8 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   isShuffle,
   onToggleRepeat,
   onToggleShuffle,
+  isFullscreen,
+  onToggleFullscreen,
 }) => {
   const config = subsonicApi.getConfig();
   const isSoundEnabled = soundEffects.getEnabled();
@@ -50,6 +54,12 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       label: 'Body Theme',
       value: theme === 'silver' ? 'Classic Silver' : theme === 'black' ? 'Space Black' : 'U2 Edition',
       action: cycleTheme,
+    },
+    {
+      id: 'fullscreen',
+      label: 'Full Screen',
+      value: isFullscreen ? 'On' : 'Off',
+      action: onToggleFullscreen,
     },
     {
       id: 'sound',

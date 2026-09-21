@@ -23,8 +23,37 @@ import { audioEngine } from '../../services/audioEngine';
 export const IpodPlayer: React.FC = () => {
   const [theme, setTheme] = useState<IpodTheme>('silver');
   const [isHold, setIsHold] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [albumsCache, setAlbumsCache] = useState<Album[]>([]);
   const [playbackState, setPlaybackState] = useState<PlaybackState>(audioEngine.getState());
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!(document.fullscreenElement || (document as any).webkitFullscreenElement));
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
+  const handleToggleFullscreen = useCallback(() => {
+    if (!document.fullscreenElement && !(document as any).webkitFullscreenElement) {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else if ((document.documentElement as any).webkitRequestFullscreen) {
+        (document.documentElement as any).webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      }
+    }
+  }, []);
 
   // Navigation Stack
   const [navStack, setNavStack] = useState<NavigationScreen[]>([
@@ -587,6 +616,8 @@ export const IpodPlayer: React.FC = () => {
             isShuffle={playbackState.isShuffle}
             onToggleRepeat={() => audioEngine.toggleRepeat()}
             onToggleShuffle={() => audioEngine.toggleShuffle()}
+            isFullscreen={isFullscreen}
+            onToggleFullscreen={handleToggleFullscreen}
           />
         )}
 

@@ -29,9 +29,9 @@ export const IpodChassis: React.FC<IpodChassisProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center select-none overflow-hidden touch-none my-auto">
-      {/* Top iPod Hardware Features: Hold Switch & Headphone Jack (always visible on all screens) */}
-      <div className="w-[min(88vw,330px)] sm:w-[350px] flex items-center justify-between px-5 mb-[-6px] z-10 shrink-0">
+    <div className="w-full h-full flex flex-col items-center justify-center select-none overflow-hidden touch-none my-auto pt-[max(env(safe-area-inset-top,0px),24px)] pb-[max(env(safe-area-inset-bottom,0px),16px)] px-2">
+      {/* Top iPod Hardware Features: Hold Switch & Headphone Jack (With Dynamic Island safe clearance) */}
+      <div className="w-[min(84vw,320px)] sm:w-[345px] flex items-center justify-between px-5 mb-[-6px] z-10 shrink-0 mt-2 sm:mt-0">
         {/* Headphone Jack */}
         <div className="w-5 h-2.5 bg-neutral-900 rounded-t-full border border-neutral-600 shadow-inner flex items-center justify-center">
           <div className="w-2.5 h-1.5 bg-black rounded-full" />
@@ -54,9 +54,9 @@ export const IpodChassis: React.FC<IpodChassisProps> = ({
         </div>
       </div>
 
-      {/* Main iPod Frame - Preserved on all mobile and desktop devices */}
+      {/* Main iPod Frame - Preserved with full rounded frame on both mobile & desktop */}
       <div
-        className={`w-[min(92vw,350px)] sm:w-[365px] h-[min(88dvh,590px)] sm:h-[610px] rounded-[36px] sm:rounded-[42px] p-3.5 sm:p-4 flex flex-col justify-between relative overflow-hidden shrink-0 ${getChassisBg()}`}
+        className={`w-[min(90vw,345px)] sm:w-[365px] h-[min(82dvh,580px)] sm:h-[610px] rounded-[36px] sm:rounded-[42px] p-3.5 sm:p-4 flex flex-col justify-between relative overflow-hidden shrink-0 ${getChassisBg()}`}
         style={{
           boxShadow:
             theme === 'silver'
@@ -68,7 +68,7 @@ export const IpodChassis: React.FC<IpodChassisProps> = ({
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none rounded-[36px] sm:rounded-[42px]" />
 
         {/* iPod Display Window */}
-        <div className="w-full h-[195px] sm:h-[235px] bg-black rounded-xl p-2 sm:p-2.5 shadow-screen-bezel relative shrink-0 flex flex-col">
+        <div className="w-full h-[190px] sm:h-[235px] bg-black rounded-xl p-2 sm:p-2.5 shadow-screen-bezel relative shrink-0 flex flex-col">
           {/* Glass Reflection Arc */}
           <div className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-white/15 to-transparent rounded-t-xl pointer-events-none z-30" />
 
