@@ -72,12 +72,12 @@ export const ClickWheel: React.FC<ClickWheelProps> = ({
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onWheel={handleWheel}
-        className={`w-[min(65vw,250px)] h-[min(65vw,250px)] sm:w-60 sm:h-60 rounded-full flex items-center justify-center relative cursor-grab active:cursor-grabbing border border-black/10 select-none touch-none ${getWheelClass()}`}
+        className={`w-[min(54vw,220px)] h-[min(54vw,220px)] sm:w-56 sm:h-56 rounded-full flex items-center justify-center relative cursor-grab active:cursor-grabbing border border-black/10 select-none touch-none ${getWheelClass()}`}
       >
         {/* Top: MENU */}
         <button
           onClick={handleButtonClick(onMenu)}
-          className="absolute top-2 sm:top-3 px-6 py-2 text-xs sm:text-sm font-black tracking-wider hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
+          className="absolute top-2 sm:top-2.5 px-5 py-1 text-xs sm:text-xs font-black tracking-wider hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
         >
           MENU
         </button>
@@ -85,33 +85,33 @@ export const ClickWheel: React.FC<ClickWheelProps> = ({
         {/* Right: NEXT */}
         <button
           onClick={handleButtonClick(onNext)}
-          className="absolute right-2 sm:right-3.5 p-3 hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
+          className="absolute right-2 sm:right-2.5 p-2 hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
         >
-          <SkipForward className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+          <SkipForward className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
         </button>
 
         {/* Left: PREV */}
         <button
           onClick={handleButtonClick(onPrev)}
-          className="absolute left-2 sm:left-3.5 p-2.5 hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
+          className="absolute left-2 sm:left-2.5 p-2 hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
         >
-          <SkipBack className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+          <SkipBack className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
         </button>
 
         {/* Bottom: PLAY / PAUSE */}
         <button
           onClick={handleButtonClick(onPlayPause)}
-          className="absolute bottom-2 sm:bottom-3 p-3 flex items-center space-x-0.5 hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
+          className="absolute bottom-2 sm:bottom-2.5 p-2 flex items-center space-x-0.5 hover:opacity-80 active:scale-95 transition-transform touch-manipulation"
         >
-          <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
-          <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
+          <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
+          <Pause className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
         </button>
 
         {/* Center Select Button */}
         <button
           data-center-button="true"
           onClick={handleButtonClick(onSelect)}
-          className={`w-[min(25vw,95px)] h-[min(25vw,95px)] sm:w-24 sm:h-24 rounded-full border shadow-md flex items-center justify-center transition-transform active:scale-[0.97] touch-manipulation ${getCenterButtonClass()}`}
+          className={`w-[min(21vw,86px)] h-[min(21vw,86px)] sm:w-22 sm:h-22 rounded-full border shadow-md flex items-center justify-center transition-transform active:scale-[0.97] touch-manipulation ${getCenterButtonClass()}`}
           title="Select"
         >
           <div className="w-full h-full rounded-full flex items-center justify-center opacity-0 hover:opacity-10 transition-opacity bg-black" />
